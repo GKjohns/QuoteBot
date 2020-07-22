@@ -1,14 +1,6 @@
 import praw
 
 
-
-
-
-
-
-
-
-
 def main():
 
     reddit = praw.Reddit(
@@ -18,7 +10,12 @@ def main():
         user_agent="yerrrrr",
         username="kyledrogo"
     )
-    print(reddit)
+
+    post_generator = reddit.subreddit('quotes').random_rising()
+    post = next(post_generator)
+    quote = post.title
+
+    print(quote)
 
 if __name__ == '__main__':
     main()
